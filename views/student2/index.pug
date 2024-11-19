@@ -1,7 +1,40 @@
 doctype html
-link(rel='stylesheet' href='css/student2.css')
+html
+  head
+    title University Major - Prompt Engineering
+    link(rel="stylesheet", href="/styles.css") // Optional stylesheet link
+  body
+    h1 Devyn
+    h2 Prompt Engineering
 
-head
-    title Under Water Basket weaver (Masters) - student 2
-body
-    h1 You will learn how to weave baskets underwater
+    section
+      h2 Location
+      p The university is located in Saturn, known for its beautiful rings and inspiring atmosphere for learning. 🪐
+
+    section
+      h2 About
+      section
+        h3 Subsection 1 Title
+        p This major 
+      section
+        h3 Subsection 2 Title
+        p Students 
+      section
+        h3 Subsection 3 Title 
+
+    section
+      h2 Things To Do
+      ul
+        li 
+        li 
+
+    // Images 
+    div.image-gallery
+      img(src="/path/to/image1.jpg", alt="Description of image 1")
+      img(src="/path/to/image2.jpg", alt="Description of image 2")
+
+    section
+      h2 Comments
+      ul#comments
+        each comment in comments
+          li= comment.text

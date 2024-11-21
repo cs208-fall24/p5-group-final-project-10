@@ -29,19 +29,6 @@ app.get('/', function (req, res) {
 
 app.get('/student1', function (req, res) {
   console.log('GET called')
-  // URL of the file to check
-  const fs = require('fs');
-
-  const directoryPath = '/'; // Specify the directory path here
-
-  fs.readdir(directoryPath, (err, files) => {
-      if (err) {
-          console.error('Error reading directory:', err);
-          return;
-      }
-
-      console.log('Files in the directory:', files);
-  });
   res.render('student1')
 })
 

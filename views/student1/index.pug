@@ -34,26 +34,40 @@ body
     h2(style="text-align: center;") Things to Do
     p(style="width: 50%; margin: 0 auto;")
         | This majors allows for an endless amount of opportunity because it can be applied anywhere!
+    img(src="https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_square.jpg" alt="Dog")
     button(onclick="checkFile()") Check File
-    div(id="result") 
+    div(id="result") hi
 
     script.
-        document.getElementById("result").textContent = 'File exists!';
-      function checkFile() {
+        
+        function checkFile() {
+            // URL of the file to check
+            const fileUrl = 'http://localhost:3000/';
 
-        const fileUrl = '/';
+            //const fs = require('fs');
 
-        fetch(fileUrl, { method: 'HEAD' })
-          .then(response => {
-            if (response.ok) {
-              document.getElementById("result").textContent = 'File exists!';
-            } else {
-              document.getElementById("result").textContent = 'File does not exist.';
-            }
-          })
-          .catch(error => {
-            document.getElementById("result").textContent = 'Error checking file.';
-          });
-      }
+            const directoryPath = 'http://localhost:3000/'; // Specify the directory path here
+
+            fetch(fileUrl, { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                document.getElementById("result").textContent = 'File exists!';
+                } else {
+                document.getElementById("result").textContent = 'File does not exist.';
+                }
+            })
+            .catch(error => {
+                document.getElementById("result").textContent = 'Error checking file.';
+            });
+            document.getElementById("result").textContent = 'File exists!';
+            fs.readdir(directoryPath, (err, files) => {
+                if (err) {
+                    console.error('Error reading directory:', err);
+                    return;
+                }
+
+                console.log('Files in the directory:', files);
+            });
+        }
         
     

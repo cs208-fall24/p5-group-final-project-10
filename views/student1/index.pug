@@ -35,27 +35,13 @@ body
     p(style="width: 50%; margin: 0 auto;")
         | This majors allows for an endless amount of opportunity because it can be applied anywhere!
     button(onclick="checkFile()") Check File
-    div(id="result") h
+    div(id="result") 
 
     script.
         document.getElementById("result").textContent = 'File exists!';
       function checkFile() {
-        // URL of the file to check
+
         const fileUrl = '/';
-        document.getElementById("result").textContent = 'File exists!';
-
-        //const fs = require('fs');
-
-        //const directoryPath = 'http://localhost:3000/'; // Specify the directory path here
-
-//        fs.readdir(directoryPath, (err, files) => {
-//            if (err) {
-//                document.getElementById("result").textContent = 'Error reading directory';
-//                return;
-//            }
-//
-//            document.getElementById("result").textContent = 'Files in the directory';
-//        });
 
         fetch(fileUrl, { method: 'HEAD' })
           .then(response => {

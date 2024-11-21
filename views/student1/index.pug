@@ -45,13 +45,13 @@ body
         fetch(fileUrl, { method: 'HEAD' })
           .then(response => {
             if (response.ok) {
-              document.getElementById("message").textContent = 'File exists!';
+              document.getElementById("result").textContent = 'File exists!';
             } else {
-              document.getElementById("message").textContent = 'File does not exist.';
+              document.getElementById("result").textContent = 'File does not exist.';
             }
           })
           .catch(error => {
-            document.getElementById("message").textContent = 'Error checking file.';
+            document.getElementById("result").textContent = 'Error checking file.';
           });
       }
         

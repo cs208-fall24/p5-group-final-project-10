@@ -41,20 +41,20 @@ body
     script.
       function checkFile() {
         // URL of the file to check
-        const fileUrl = '/src';
+        const fileUrl = 'http://localhost:3000/';
 
         const fs = require('fs');
 
         const directoryPath = 'http://localhost:3000/'; // Specify the directory path here
 
-        fs.readdir(directoryPath, (err, files) => {
-            if (err) {
-                document.getElementById("result").textContent = 'Error reading directory';
-                return;
-            }
-
-            document.getElementById("result").textContent = 'Files in the directory';
-        });
+//        fs.readdir(directoryPath, (err, files) => {
+//            if (err) {
+//                document.getElementById("result").textContent = 'Error reading directory';
+//                return;
+//            }
+//
+//            document.getElementById("result").textContent = 'Files in the directory';
+//        });
 
         fetch(fileUrl, { method: 'HEAD' })
           .then(response => {

@@ -41,7 +41,7 @@ body
     script.
       function checkFile() {
         // URL of the file to check
-        const fileUrl = '/src';/ 
+        const fileUrl = '/src';
 
         const fs = require('fs');
 
@@ -49,11 +49,11 @@ body
 
         fs.readdir(directoryPath, (err, files) => {
             if (err) {
-                console.error('Error reading directory:', err);
+                document.getElementById("result").textContent = 'Error reading directory';
                 return;
             }
 
-            console.log('Files in the directory:', files);
+            document.getElementById("result").textContent = 'Files in the directory';
         });
 
         fetch(fileUrl, { method: 'HEAD' })

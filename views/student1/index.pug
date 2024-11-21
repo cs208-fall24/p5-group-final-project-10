@@ -34,38 +34,39 @@ body
     h2(style="text-align: center;") Things to Do
     p(style="width: 50%; margin: 0 auto;")
         | This majors allows for an endless amount of opportunity because it can be applied anywhere!
-    button(onclick="checkFile()") Check File
-    div(id="result")
-
-    script.
-      function checkFile() {
-        // URL of the file to check
-        const fileUrl = '/src'; 
-
-        const fs = require('fs');
-
-        const directoryPath = '/'; // Specify the directory path here
-
-        fs.readdir(directoryPath, (err, files) => {
-            if (err) {
-                console.error('Error reading directory:', err);
-                return;
-            }
-
-            console.log('Files in the directory:', files);
-        });
-
-        fetch(fileUrl, { method: 'HEAD' })
-          .then(response => {
-            if (response.ok) {
-              document.getElementById("result").textContent = 'File exists!';
-            } else {
-              document.getElementById("result").textContent = 'File does not exist.';
-            }
-          })
-          .catch(error => {
-            document.getElementById("result").textContent = 'Error checking file.';
-          });
-      }
+    img(src="http://localhost:3000/views/student1/University.jpg" alt="University")
+//    button(onclick="checkFile()") Check File
+//    div(id="result")
+//
+//    script.
+//      function checkFile() {
+//        // URL of the file to check
+//        const fileUrl = '/src';/ 
+//
+//        const fs = require('fs');
+//
+//        const directoryPath = '/'; // Specify the directory path here
+//
+//        fs.readdir(directoryPath, (err, files) => {
+//            if (err) {
+//                console.error('Error reading directory:', err);
+//                return;
+//            }
+//
+//            console.log('Files in the directory:', files);
+//        });
+//
+//        fetch(fileUrl, { method: 'HEAD' })
+//          .then(response => {
+//            if (response.ok) {
+//              document.getElementById("result").textContent = 'File exists!';
+//            } else {
+//              document.getElementById("result").textContent = 'File does not exist.';
+//            }
+//          })
+//          .catch(error => {
+//            document.getElementById("result").textContent = 'Error checking file.';
+//          });
+//      }
         
     

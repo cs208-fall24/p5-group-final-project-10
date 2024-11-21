@@ -17,9 +17,13 @@ app.get('/', function (req, res) {
   res.render('index')
 })
 
+const path = require('path')
+
 app.get('/student1', function (req, res) {
   console.log('GET called')
-  res.render('student1')
+  //res.render('student1')
+  const filePath = path.join(__dirname, '/views/student1/University.jpg')
+  res.sendFile(filePath);
 })
 
 app.get('/student2', function (req, res) {

@@ -45,6 +45,11 @@ app.get('/student1', function (req, res) {
   res.render('student1')
 })
 
+app.get('/comments', function (req, res){
+  console.log('GET called')
+  res.render('student1/comments')
+})
+
 app.post('/deleteComment', function (req, res){
   console.log(req.body.value);
   const lineToDelete = req.body.value;

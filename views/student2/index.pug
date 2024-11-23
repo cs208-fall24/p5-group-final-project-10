@@ -1,7 +1,57 @@
 doctype html
-link(rel='stylesheet' href='css/student2.css')
+html
+  head
+    title University Major - Prompt Engineering
+    //- Optional stylesheet link
+    link(rel="stylesheet", href="/styles.css")
+  body
+    h1 Devyn
+    h2 Prompt Engineering
 
-head
-    title Under Water Basket weaver (Masters) - student 2
-body
-    h1 You will learn how to weave baskets underwater
+    // Location Section
+    section
+      h2 Location
+      p The university is located on Saturn, known for its beautiful rings and inspiring atmosphere for learning. 🪐
+
+    // About Section
+    section
+      h2 About
+      section
+        h3 Major
+        p The next evolution of computer science, Prompt Engineering is a major that focuses on the development of software and hardware systems that are designed to be more human-like in their interactions.
+      section
+        h3 Faculty
+        p Students 
+      section
+        h3 Notable Alumni
+        details
+          summary Geoffrey Hinton
+          p Often referred to as the "Godfather of AI," Hinton's pioneering work in neural networks earned him the 2018 Turing Award alongside Yoshua Bengio and Yann LeCun. In 2024, he was awarded the Nobel Prize in Physics for his foundational contributions to AI. 
+        details
+          summary Fei-Fei Li
+          p Known for establishing ImageNet, a large-scale dataset that propelled advancements in computer vision, Li is a professor at Stanford University and co-director of the Stanford Human-Centered AI Institute. 
+        details
+          summary Yann LeCun
+          p As Meta's Chief AI Scientist, LeCun has been instrumental in developing convolutional neural networks and deep learning techniques. He shared the 2018 Turing Award with Hinton and Bengio.
+
+    // Things To Do Section
+    section
+      h3 Things To Do
+      ul
+        li Visit the Saturn Observatory.
+        li Participate in intergalactic hackathons.
+
+    // Image Gallery Section
+    div.image-gallery
+      img(src="/images/saturn-campus.jpg", alt="Beautiful campus on Saturn")
+      img(src="/images/lecture-hall.jpg", alt="Modern lecture hall")
+
+    // Comments Section
+    section
+      h2 Comments
+      if comments && comments.length
+        ul#comments
+          each comment in comments
+            li= comment.text
+      else
+        p No comments available.

@@ -64,10 +64,7 @@ link(rel='stylesheet' href='css/student3.css')
     <ul>
       - for (let i = 0; i < tasks.length; i++)
         <li> 
-         // | #{tasks[i].id} - #{tasks[i].task}
-          form(action="/delete" method="POST")
-            input(type="hidden" name="id" value=tasks[i].id)
-            input(type="submit" value="Delete")
+         
         </li>
     </ul>
 </body>

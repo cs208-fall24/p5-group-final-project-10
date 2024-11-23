@@ -32,6 +32,11 @@ app.get('/student1', function (req, res) {
   res.render('student1')
 })
 
+app.get('/comments', function (req, res){
+  console.log('GET called')
+  res.render('student1/comments')
+})
+
 app.get('/student2', function (req, res) {
   db.all('SELECT review FROM PromptEngineering ORDER BY RANDOM() LIMIT 5', (err, rows) => {
     if (err) {

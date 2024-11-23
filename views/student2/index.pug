@@ -2,7 +2,8 @@ doctype html
 html
   head
     title University Major - Prompt Engineering
-    link(rel="stylesheet", href="/styles.css") // Link to optional stylesheet
+    //- Optional stylesheet link
+    link(rel="stylesheet", href="/styles.css")
   body
     h1 Devyn
     h2 Prompt Engineering
@@ -16,21 +17,29 @@ html
     section
       h2 About
       section
-        h3 Subsection 1 Title
-        p This major focuses on mastering prompt engineering for AI systems.
+        h3 Major
+        p The next evolution of computer science, Prompt Engineering is a major that focuses on the development of software and hardware systems that are designed to be more human-like in their interactions.
       section
-        h3 Subsection 2 Title
-        p Students explore innovative techniques to design effective prompts.
+        h3 Faculty
+        p Students 
       section
-        h3 Subsection 3 Title
-        p Graduates are equipped with skills to lead in AI-driven industries.
+        h3 Notable Alumni
+        details
+          summary Geoffrey Hinton
+          p Often referred to as the "Godfather of AI," Hinton's pioneering work in neural networks earned him the 2018 Turing Award alongside Yoshua Bengio and Yann LeCun. In 2024, he was awarded the Nobel Prize in Physics for his foundational contributions to AI. 
+        details
+          summary Fei-Fei Li
+          p Known for establishing ImageNet, a large-scale dataset that propelled advancements in computer vision, Li is a professor at Stanford University and co-director of the Stanford Human-Centered AI Institute. 
+        details
+          summary Yann LeCun
+          p As Meta's Chief AI Scientist, LeCun has been instrumental in developing convolutional neural networks and deep learning techniques. He shared the 2018 Turing Award with Hinton and Bengio.
 
     // Things To Do Section
     section
-      h2 Things To Do
+      h3 Things To Do
       ul
-        li Attend workshops and lectures.
-        li Explore research opportunities on Saturn's unique environment.
+        li Visit the Saturn Observatory.
+        li Participate in intergalactic hackathons.
 
     // Image Gallery Section
     div.image-gallery
@@ -40,6 +49,9 @@ html
     // Comments Section
     section
       h2 Comments
-      ul#comments
-        each comment in comments
-          li= comment.text
+      if comments && comments.length
+        ul#comments
+          each comment in comments
+            li= comment.text
+      else
+        p No comments available.

@@ -7,4 +7,24 @@ body
     h1 Grant Koupal
 
     h2(style="text-align: center;") Comments
+
+    button(onclick="addComment()") Add Comment
+
+    script.
+        function addComment(){
+            // Get text from the textarea
+            const text = "Hello World";
+            
+            // Create a Blob object with the text content
+            const blob = new Blob([text], { type: 'text/plain' });
+            
+            // Create a link element to allow the user to download the file
+            const link = document.createElement('a');
+            // Create a temporary URL for the Blob
+            link.href = URL.createObjectURL(blob);
+            // Set the default file name
+            link.download = 'Data.txt';
+            // Trigger the download
+            link.click();
+        }
     

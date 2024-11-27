@@ -6,25 +6,54 @@ head
 body
     h1 Grant Koupal
 
-    h2(style="text-align: center;") Comments
+    h2(style="text-align: center;" id="HI") Comments
 
-    button(onclick="addComment()") Add Comment
+    button(id="downloadButton") Add Comment
 
     script.
-        function addComment(){
-            // Get text from the textarea
-            const text = "Hello World";
-            
-            // Create a Blob object with the text content
-            const blob = new Blob([text], { type: 'text/plain' });
-            
-            // Create a link element to allow the user to download the file
-            const link = document.createElement('a');
-            // Create a temporary URL for the Blob
-            link.href = URL.createObjectURL(blob);
-            // Set the default file name
-            link.download = 'Data.txt';
-            // Trigger the download
-            link.click();
-        }
+
+        document.getElementById('downloadButton').addEventListener('click', function() {
+
+            const file = "Data.txt"; // Get the file the user selected
+            const newText = "Hello World"; // Text to append
+
+            if (!file) {
+                alert("Please select a file first!");
+                return;
+            }
+
+            const reader = new FileReader();
+
+            const hello = document.getElementById('HI');
+            hello.textContent = "Hello World!";
+
+            reader.onload = function(e) {
+                // Get the current content of the uploaded file
+
+                const existingContent = e.target.result;
+
+                // Combine the existing content with the new text
+                const updatedContent = existingContent + "\n" + newText;
+
+                // Create a Blob with the updated content
+                const blob = new Blob([updatedContent], { type: 'text/plain' });
+
+                // Create a link element to download the modified file
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'Updated_' + file.name; // Name the new file
+
+                // Trigger the download
+                link.click();
+            };
+
+            if (fileInput.files.length === 0) {
+                hello.textContent = "No file selected.";
+            } else {
+               hello.textContent = "File selected: Data.txt";
+            }
+
+            // Read the file as text
+            reader.readAsText(file);
+        });
     

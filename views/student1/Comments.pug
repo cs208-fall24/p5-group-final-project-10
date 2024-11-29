@@ -12,48 +12,42 @@ body
 
     script.
 
+        const fileUrl = "Data.txt";
+        
+        fetch(fileUrl)
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('File not found');
+            }
+            return response.text();
+        })
+        .then(data => {
+            //Show comments
+            const DATA = data;
+
+            const allComments = DATA.split('\n');
+
+            for(let i = 0; i < allComments.length; i++){
+                const pElement = document.createElement('p');
+
+                pElement.textContent = allComments[i];
+
+                pElement.setAttribute('style', 'color: blue; text-align: center');
+
+                pElement.id = i;
+
+                pElement.textContent = (i + 1) + ". " + pElement.textContent;
+
+                document.body.appendChild(pElement);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching the file:', error);
+        });
+
+
         document.getElementById('downloadButton').addEventListener('click', function() {
-
-            const file = "Data.txt"; // Get the file the user selected
-            const newText = "Hello World"; // Text to append
-
-            if (!file) {
-                alert("Please select a file first!");
-                return;
-            }
-
-            const reader = new FileReader();
-
-            const hello = document.getElementById('HI');
-            hello.textContent = "Hello World!";
-
-            reader.onload = function(e) {
-                // Get the current content of the uploaded file
-
-                const existingContent = e.target.result;
-
-                // Combine the existing content with the new text
-                const updatedContent = existingContent + "\n" + newText;
-
-                // Create a Blob with the updated content
-                const blob = new Blob([updatedContent], { type: 'text/plain' });
-
-                // Create a link element to download the modified file
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = 'Updated_' + file.name; // Name the new file
-
-                // Trigger the download
-                link.click();
-            };
-
-            if (fileInput.files.length === 0) {
-                hello.textContent = "No file selected.";
-            } else {
-               hello.textContent = "File selected: Data.txt";
-            }
-
-            // Read the file as text
-            reader.readAsText(file);
+            
+            
         });
     

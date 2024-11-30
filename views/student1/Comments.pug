@@ -18,4 +18,87 @@ body
 
     style(src="css/student1.css")
     script(src="js/student1-comments.js")
+    button(id="addButton" style="position: absolute; left: 50%; transform: translateX(-100px);") Add Comment
+
+    input(type="text" style="width: auto; position: absolute; left: 50%;" id="commentInput" placeholder="Comment...")
+
+    p -
+
+    script.
+
+        numberOfComments = 0;
+        const fileUrl = "Data.txt";
+        
+        fetch(fileUrl)
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('File not found');
+            }
+            return response.text();
+        })
+        .then(data => {
+            //Show comments
+            const DATA = data;
+
+            const allComments = DATA.split('\n');
+
+            for(let i = 0; i < allComments.length; i++){
+                const pElement = document.createElement('p');
+
+                pElement.textContent = allComments[i];
+
+                pElement.setAttribute('style', 'color: blue; text-align: center');
+
+                pElement.id = i;
+
+                pElement.textContent = (i + 1) + ". " + pElement.textContent;
+
+                numberOfComments++;
+
+                document.body.appendChild(pElement);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching the file:', error);
+        });
+
+
+        document.getElementById('addButton').addEventListener('click', function() {
+            const text = document.getElementById('commentInput').value;
+
+            document.getElementById('commentInput').value = "";
+
+            const pElement = document.createElement('p');
+
+            pElement.textContent = text;
+
+            pElement.setAttribute('style', 'color: blue; text-align: center');
+
+            pElement.id = numberOfComments;
+
+            pElement.textContent = (numberOfComments + 1) + ". " + pElement.textContent;
+
+            numberOfComments++;
+
+            document.body.appendChild(pElement);
+
+            const postData = {
+                value: text
+            };
+
+            fetch('http://localhost:3000/addComment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Reponse:', data);
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        });
     

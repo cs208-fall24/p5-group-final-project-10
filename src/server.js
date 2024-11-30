@@ -45,10 +45,36 @@ app.get('/student1', function (req, res) {
   res.render('student1')
 })
 
+app.post('/addComment', function (req, res) {
+  console.log(req.body)
+
+  // The text you want to append
+  const textToAppend = '\n' + req.body.value;
+
+  // The file path (it should be an existing file)
+  const filePath = 'public/Data.txt';
+
+  if (fs.existsSync(filePath)) {
+    console.log('File exists');
+  } else {
+    console.log('File does not exist');
+  }
+
+  // Append the text to the file
+  fs.appendFile(filePath, textToAppend, (err) => {
+  if (err) {
+      console.log('Error appending to file:', err);
+  } else {
+      console.log('Text successfully appended!');
+  }
+  });
+})
+
 app.get('/comments', function (req, res){
   console.log('GET called')
   res.render('student1/comments')
 })
+//-----
 
 app.post('/deleteComment', function (req, res){
   console.log(req.body.value);

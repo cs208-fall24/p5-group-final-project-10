@@ -62,10 +62,12 @@ app.post('/deleteComment', function (req, res){
 })
 
 app.post('/print', function (req, res){
+  console.log('POST called')
   console.log(req.body.value);
 })
 
 app.post('/addComment', function (req, res) {
+  console.log('POST called')
   console.log(req.body.value)
 
   const textToAppend = '\n' + req.body.value;
@@ -79,6 +81,31 @@ app.post('/addComment', function (req, res) {
       console.log('Text successfully appended!');
   }
   });
+})
+
+app.post('/editComment', function (req, res){
+  console.log('POST called')
+  
+  fs.readFile("public/Data.txt", 'utf8', (err, data) => {
+    if(err){
+      console.error('Error reading the file: ', err);
+      return;
+    }
+
+    const lines = data.split('\n');
+
+    lines[req.body.index] = req.body.value;
+
+    const updatedContent = lines.join('\n');
+
+    fs.writeFile("public/Data.txt", updatedContent, 'utf8', (err) => {
+      if(err){
+        console.error('Error writing to the file: ', err);
+      } else {
+        console.log('File updated successfully!');
+      }
+    })
+  })
 })
 
 app.get('/comments', function (req, res){

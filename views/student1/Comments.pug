@@ -121,11 +121,32 @@ body
                     input.value = pElement.textContent.substring(3, pElement.textContent.length - 10);
                     input.style = "display: block; margin-right: auto; margin-left: auto;";
                     input.style.width = (window.innerWidth / 2) + 'px';
+                    const buttons = pElement.querySelectorAll('button');
                     pElement.replaceWith(input);
 
                     input.addEventListener('keydown', function(event){
                         if(event.key === 'Enter'){
-                            pElement.textContent = input.value;
+                            const postData = {
+                                value: input.value,
+                                index: parseInt(pElement.id)
+                            };
+                            fetch('http://localhost:3000/editComment', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(postData),
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log('Reponse:', data);
+                                })
+                                .catch(error => {
+                                    console.error('Error: ', error);
+                                });
+                            pElement.textContent = (parseInt(pElement.id) + 1) + ". " + input.value;
+                            pElement.appendChild(buttons[0]);
+                            pElement.appendChild(buttons[1]);
                             input.replaceWith(pElement);
                         }
                     })

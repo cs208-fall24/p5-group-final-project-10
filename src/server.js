@@ -29,28 +29,49 @@ app.get('/', function (req, res) {
   res.render('index')
 })
 
-//-----
+//----- STUDENT 1
 app.get('/student1', function (req, res) {
   console.log('GET called')
   res.render('student1')
 })
 
-app.post('/addComment', function (req, res) {
-  console.log(req.body)
+app.post('/deleteComment', function (req, res){
+  console.log(req.body.value);
+  const lineToDelete = req.body.value;
 
-  // The text you want to append
+  fs.readFile("public/Data.txt", 'utf8', (err, data) => {
+    if(err){
+      console.error('Error reading the file:', err);
+      return;
+    }
+
+    let lines = data.split('\n');
+
+    lines = lines.filter((line, index) => index !== lineToDelete);
+
+    const updatedContent = lines.join('\n');
+
+    fs.writeFile("public/Data.txt", updatedContent, 'utf8', (err) => {
+      if(err) {
+        console.error('Error writing to the file:', err);
+      } else {
+        console.log('Line deleted successfully.');
+      }
+    });
+  });
+})
+
+app.post('/print', function (req, res){
+  console.log(req.body.value);
+})
+
+app.post('/addComment', function (req, res) {
+  console.log(req.body.value)
+
   const textToAppend = '\n' + req.body.value;
 
-  // The file path (it should be an existing file)
   const filePath = 'public/Data.txt';
 
-  if (fs.existsSync(filePath)) {
-    console.log('File exists');
-  } else {
-    console.log('File does not exist');
-  }
-
-  // Append the text to the file
   fs.appendFile(filePath, textToAppend, (err) => {
   if (err) {
       console.log('Error appending to file:', err);
@@ -64,7 +85,7 @@ app.get('/comments', function (req, res){
   console.log('GET called')
   res.render('student1/comments')
 })
-//-----
+//----- STUDENT 1
 
 app.get('/student2', function (req, res) {
   db.all('SELECT review FROM PromptEngineering ORDER BY RANDOM() LIMIT 5', (err, rows) => {

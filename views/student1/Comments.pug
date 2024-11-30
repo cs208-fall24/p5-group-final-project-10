@@ -4,7 +4,7 @@ link(rel='stylesheet' href='css/comments.css')
 head
     title Sleeping - Student 1 - Comments
 body
-    h1 Grant Koupal
+    h1 Grant Koupal - University of Sleeping
 
     h2(style="text-align: center;" id="HI") Comments
 
@@ -18,6 +18,7 @@ body
 
         numberOfComments = 0;
         const fileUrl = "Data.txt";
+        let comments = [];
         
         fetch(fileUrl)
         .then(response => {
@@ -33,41 +34,122 @@ body
             const allComments = DATA.split('\n');
 
             for(let i = 0; i < allComments.length; i++){
+                //----- comment
                 const pElement = document.createElement('p');
 
                 pElement.textContent = allComments[i];
-
-                pElement.setAttribute('style', 'color: blue; text-align: center');
-
+                pElement.setAttribute('style', 'color: blue; transform: translateX(40px);');
+                pElement.style.maxWidth = (window.innerWidth / 2) + 'px';
+                pElement.style.textAlign = "center";
+                pElement.style.margin = '0 auto';
+                pElement.style.marginBottom = '20px';
                 pElement.id = i;
-
                 pElement.textContent = (i + 1) + ". " + pElement.textContent;
 
                 numberOfComments++;
 
                 document.body.appendChild(pElement);
+
+                comments.push(pElement);
+
+                //----- deleteButton
+
+                const deleteButton = document.createElement('button');
+
+                deleteButton.innerHTML = 'delete';
+                deleteButton.style = "background-color: transparent; border: 2px solid transparent; color: #EEE";
+
+                deleteButton.addEventListener('mouseover', function(){
+                    deleteButton.style.color = 'red';
+                });
+
+                deleteButton.addEventListener('mouseout', function(){
+                    deleteButton.style.color = '#EEE';
+                });
+
+                deleteButton.addEventListener('click', function(){
+                    const postData = {
+                        value: pElement.id,
+                    };
+                    fetch('http://localhost:3000/deleteComment', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(postData),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Reponse:', data);
+                        })
+                        .catch(error => {
+                            console.error('Error: ', error);
+                        });
+                    for(let i = pElement.id + 1; i < comments.length(); i++){
+                        print("HI");
+                        const commentText = comments[i].textContent;
+                        const index = commentText.indexOf('.');
+                        comments[i].id--;
+                        comments[i].textContent = comments[i].id + commentText.substring(index);
+                    }
+                    document.getElementById("HI").textContent = "HELLO";
+                    comments.splice(pElement.id, 1);
+                    document.getElementById(pElement.id).remove();
+                    deleteButton.remove();
+                });
+
+                pElement.appendChild(deleteButton);
+
+                //----- editButton
+
+                const editButton = document.createElement('button');
+
+                editButton.innerHTML = 'edit';
+                editButton.style = "background-color: transparent; border: 2px solid transparent; color: #EEE";
+
+                editButton.addEventListener('mouseover', function(){
+                    editButton.style.color = 'red';
+                });
+
+                editButton.addEventListener('mouseout', function(){
+                    editButton.style.color = '#EEE';
+                });
+
+                editButton.addEventListener('click', function(){
+                    editButton.style.color = '#EEE';
+                    const input  = document.createElement('input');
+                    input.value = pElement.textContent.substring(3, pElement.textContent.length - 10);
+                    input.style = "display: block; margin-right: auto; margin-left: auto;";
+                    input.style.width = (window.innerWidth / 2) + 'px';
+                    pElement.replaceWith(input);
+
+                    input.addEventListener('keydown', function(event){
+                        if(event.key === 'Enter'){
+                            pElement.textContent = input.value;
+                            input.replaceWith(pElement);
+                        }
+                    })
+                })
+
+                pElement.appendChild(editButton);
             }
         })
         .catch(error => {
             console.error('Error fetching the file:', error);
         });
 
+        //----------
+        //----------
 
         document.getElementById('addButton').addEventListener('click', function() {
             const text = document.getElementById('commentInput').value;
 
             document.getElementById('commentInput').value = "";
-
             const pElement = document.createElement('p');
-
             pElement.textContent = text;
-
             pElement.setAttribute('style', 'color: blue; text-align: center');
-
             pElement.id = numberOfComments;
-
             pElement.textContent = (numberOfComments + 1) + ". " + pElement.textContent;
-
             numberOfComments++;
 
             document.body.appendChild(pElement);
@@ -91,4 +173,26 @@ body
                     console.error('Error: ', error);
                 });
         });
+
+        function print(printStatement){
+            
+            const postData = {
+                value: printStatement
+            }
+
+            fetch('http://localhost:3000/print', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Reponse:', data);
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
+        }
     

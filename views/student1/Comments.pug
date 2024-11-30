@@ -8,10 +8,15 @@ body
 
     h2(style="text-align: center;" id="HI") Comments
 
-    button(id="downloadButton") Add Comment
+    button(id="addButton" style="position: absolute; left: 50%; transform: translateX(-100px);") Add Comment
+
+    input(type="text" style="width: auto; position: absolute; left: 50%;" id="commentInput" placeholder="Comment...")
+
+    p -
 
     script.
 
+        numberOfComments = 0;
         const fileUrl = "Data.txt";
         
         fetch(fileUrl)
@@ -38,6 +43,8 @@ body
 
                 pElement.textContent = (i + 1) + ". " + pElement.textContent;
 
+                numberOfComments++;
+
                 document.body.appendChild(pElement);
             }
         })
@@ -46,8 +53,42 @@ body
         });
 
 
-        document.getElementById('downloadButton').addEventListener('click', function() {
-            
-            
+        document.getElementById('addButton').addEventListener('click', function() {
+            const text = document.getElementById('commentInput').value;
+
+            document.getElementById('commentInput').value = "";
+
+            const pElement = document.createElement('p');
+
+            pElement.textContent = text;
+
+            pElement.setAttribute('style', 'color: blue; text-align: center');
+
+            pElement.id = numberOfComments;
+
+            pElement.textContent = (numberOfComments + 1) + ". " + pElement.textContent;
+
+            numberOfComments++;
+
+            document.body.appendChild(pElement);
+
+            const postData = {
+                value: text
+            };
+
+            fetch('http://localhost:3000/addComment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Reponse:', data);
+                })
+                .catch(error => {
+                    console.error('Error: ', error);
+                });
         });
     

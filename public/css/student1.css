@@ -1,3 +1,38 @@
+
 body{
-    background-color: hotpink;
+    background-color: black;
+}
+
+.double-image {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.image-left {
+    margin-left: auto;
+}
+
+.image-right{
+    margin-right: auto;
+}
+
+.center-text{
+    text-align: center;
+    color: white;
+}
+
+.top-comments{
+    text-align: center;
+}
+
+.comment{
+    text-align: center;
+    color: blue;
+    transform: translateX(40px);
+    overflow-wrap: break-word;
+    hyphens: auto;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }

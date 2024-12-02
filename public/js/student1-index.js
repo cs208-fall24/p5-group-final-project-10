@@ -10,7 +10,7 @@ fetch("Data.txt")
     let DATA = data;
     let comments = DATA.split('\n');
 
-    for(let i = 0; i < 5; i++){
+    for(let i = 0; i < 3; i++){
         try{
             let comment = document.createElement('p');
             comment.className = "center-text";

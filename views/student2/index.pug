@@ -2,55 +2,49 @@ doctype html
 html
   head
     title University Major - Prompt Engineering
-    //- Optional stylesheet link
-    link(rel="stylesheet", href="/styles.css")
+    link(rel="stylesheet", href="css/student2.css")
   body
     h1 Devyn
     h2 Prompt Engineering
 
     // Location Section
-    // Location Section
     section
       h2 Location
-      p The university is located on Saturn, known for its beautiful rings and inspiring atmosphere for learning. 🪐
+      p Located on Saturn, our university offers an unparalleled educational environment among its breathtaking rings. As a center for intergalactic innovation, Saturn provides a futuristic and serene atmosphere for students who aspire to push the boundaries of technology. 🪐
 
-    // About Section
     // About Section
     section
       h2 About
       section
         h3 Major
-<<<<<<< HEAD
-        p The next evolution of computer science, Prompt Engineering is a major focuses on mastering prompt engineering for AI systems.that focuses on the development of software and hardware systems that are designed to be more human-like in their interactions.
-=======
-        p The next evolution of computer science, Prompt Engineering is a major that focuses on the development of software and hardware systems that are designed to be more human-like in their interactions.
->>>>>>> ad5bf0a (Drop downs)
+        p Prompt Engineering is at the cutting edge of artificial intelligence and human-computer interaction. Students in this major learn to design, train, and fine-tune large language models and other AI systems to respond accurately, empathetically, and efficiently. Graduates of this program are equipped with advanced skills in AI prompt design, data modeling, and system optimization.
       section
         h3 Faculty
-        p Students 
+        p Our faculty consists of industry leaders and researchers with decades of experience in AI and human-computer interaction. Professors work closely with students on groundbreaking research and projects, often collaborating with leading organizations across the galaxy.
       section
         h3 Notable Alumni
         details
           summary Geoffrey Hinton
-          p Often referred to as the "Godfather of AI," Hinton's pioneering work in neural networks earned him the 2018 Turing Award alongside Yoshua Bengio and Yann LeCun. In 2024, he was awarded the Nobel Prize in Physics for his foundational contributions to AI. 
+          p Often referred to as the "Godfather of AI," Geoffrey Hinton’s foundational work in neural networks has shaped the future of artificial intelligence. He received the prestigious Turing Award and, in 2024, the Nobel Prize in Physics for his revolutionary contributions to deep learning.
         details
           summary Fei-Fei Li
-          p Known for establishing ImageNet, a large-scale dataset that propelled advancements in computer vision, Li is a professor at Stanford University and co-director of the Stanford Human-Centered AI Institute. 
+          p Fei-Fei Li is the visionary behind ImageNet, a large-scale dataset that propelled advancements in computer vision. She continues to lead research as a professor at Stanford and co-director of the Stanford Human-Centered AI Institute.
         details
           summary Yann LeCun
-          p As Meta's Chief AI Scientist, LeCun has been instrumental in developing convolutional neural networks and deep learning techniques. He shared the 2018 Turing Award with Hinton and Bengio.
+          p Yann LeCun, Meta’s Chief AI Scientist, is a pioneer in convolutional neural networks and deep learning. His work has laid the groundwork for the future of AI, earning him the Turing Award alongside Hinton and Bengio.
 
     // Things To Do Section
     section
       h3 Things To Do
       ul
-        li 
-        li 
+        li Tour the Saturn Observatory and witness the breathtaking cosmic views.
+        li Join intergalactic hackathons, where the best minds collaborate on projects that push the boundaries of AI.
+        li Work on cutting-edge research projects in our advanced AI labs.
 
     // Image Gallery Section
     div.image-gallery
       img(src="/images/saturn-campus.jpg", alt="Beautiful campus on Saturn")
-      img(src="/images/lecture-hall.jpg", alt="Modern lecture hall")
+      img(src="/images/lecture-hall.jpg", alt="Modern lecture hall with advanced AI technology")
 
     // Comments Section
     section
@@ -58,6 +52,19 @@ html
       if comments && comments.length
         ul#comments
           each comment in comments
-            li= comment.text
+            li
+              span= comment.comment
+              // Edit and Delete Functionality
+              form(action=`/student2/comments/edit/${comment.id}` method="POST" style="display:inline")
+                input(type="text" name="comment" value=comment.comment placeholder="Edit comment")
+                button(type="submit") Edit
+              form(action=`/student2/comments/delete/${comment.id}` method="POST" style="display:inline")
+                button(type="submit") Delete
       else
-        p No comments available.
+        p No comments available. Be the first to share your thoughts about Prompt Engineering!
+
+      // Add Comment Form
+      h3 Add a New Comment
+      form(action="/student2/comments/add" method="POST")
+        input(type="text" name="comment" placeholder="Enter your comment here" required)
+        button(type="submit") Add Comment

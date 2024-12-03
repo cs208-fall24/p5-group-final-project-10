@@ -24,6 +24,16 @@ db.serialize(() => {
   `);
 });
 
+// Initialize a table specifically for "Prompt Engineering"
+db.serialize(() => {
+  db.run(`
+    CREATE TABLE IF NOT EXISTS PromptEngineering (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      comment TEXT NOT NULL
+    )
+  `);
+});
+
 app.get('/', function (req, res) {
   console.log('GET called')
   res.render('index')

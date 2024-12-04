@@ -45,187 +45,187 @@ section h2, section h3 {
     margin-top: 0;
 }
 
-/* Image gallery styling */
-.image-gallery {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 30px auto;
+/* Reviews Section */
+#reviews-section {
+    max-width: 800px;
+    margin: 0 auto 30px;
 }
 
-.image-gallery img {
-    max-width: 45%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.image-gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Unordered list styling */
-ul {
+ul#reviews {
     list-style: none;
     padding: 0;
 }
 
-ul li {
-    margin: 10px 0;
-    padding-left: 40px;
-    position: relative;
-}
-
-ul li:before {
-    content: "✔";
-    position: absolute;
-    left: 10px;
-    color: #27ae60;
-    font-size: 1.5em;
-}
-
-/* Comments styling */
-#comments {
-    margin-top: 20px;
-    padding: 0;
-    list-style-type: none;
-}
-
-#comments li {
+ul#reviews li {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
+    justify-content: space-between;
+    align-items: center;
     padding: 15px;
+    margin-bottom: 15px;
+    background: #fff;
     border: 1px solid #ddd;
-    background: #f9f9f9;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-#comments li:hover {
+ul#reviews li:hover {
     transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Comment text */
-#comments li span {
+/* Review text styling */
+span.review-text {
     font-size: 1.1em;
-    margin-bottom: 10px;
+    color: #34495e;
+    flex: 1;
+    margin-right: 15px;
+    text-align: left;
 }
 
-/* Button group styling */
-#comments li form {
-    display: inline-block;
-    margin-right: 10px;
+/* Button Controls */
+div.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    min-width: 150px; /* Ensure consistent alignment */
 }
 
-#comments li button {
-    background-color: #3498db;
-    color: white;
-    padding: 8px 12px;
+/* Buttons */
+.btn {
+    padding: 6px 12px;
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     font-size: 0.9em;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
+    min-width: 75px; /* Keep buttons the same size */
+    text-align: center;
 }
 
-#comments li button:hover {
-    background-color: #2980b9;
-    transform: scale(1.05);
+.edit-btn {
+    background-color: #007bff;
+    color: white;
 }
 
-#comments li button:active {
-    background-color: #1f618d;
-    transform: scale(1);
+.edit-btn:hover {
+    background-color: #0056b3;
 }
 
-/* Form styling */
-form {
-    margin-top: 15px;
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
 }
 
-input[type="text"] {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 10px;
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+
+/* Edit Form */
+.edit-form {
+    display: none; /* Hidden by default */
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.edit-form.active {
+    display: flex; /* Show when active */
+}
+
+/* Input field for editing */
+.edit-input {
+    padding: 6px;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    flex: 1;
     box-sizing: border-box;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-input[type="text"]:focus {
+.edit-input:focus {
     border-color: #3498db;
     outline: none;
     box-shadow: 0 0 6px rgba(52, 152, 219, 0.5);
 }
 
-/* Buttons styling */
-button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
+/* Add Review Section */
+#add-review-section {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+.add-review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review-input {
+    padding: 10px;
     font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-button:hover {
-    background-color: #2980b9;
-    transform: scale(1.05);
+.review-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 6px rgba(52, 152, 219, 0.5);
+    outline: none;
 }
 
-button:active {
-    background-color: #1f618d;
-    transform: scale(1);
+.add-btn {
+    background-color: #28a745;
+    color: white;
 }
 
-/* Details and summary styling */
-details {
-    margin: 15px 0;
-    padding: 15px;
-    border: 1px solid #ddd;
-    background: #f9f9f9;
-    border-radius: 10px;
-    transition: box-shadow 0.3s;
+.add-btn:hover {
+    background-color: #218838;
 }
 
-details:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-summary {
-    cursor: pointer;
-    font-weight: bold;
-    color: #2980b9;
-    font-size: 1.2em;
-}
-
-summary:hover {
-    text-decoration: underline;
-}
-
-/* Link styling */
+/* Back to main page link styling */
 a {
-    color: #3498db;
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 1.2em;
+    color: #007bff;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s;
 }
 
 a:hover {
+    color: #0056b3;
     text-decoration: underline;
-    color: #21618c;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    ul#reviews li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .controls {
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+
     .image-gallery {
         flex-direction: column;
         gap: 15px;
@@ -241,5 +241,17 @@ a:hover {
 
     h1, h2 {
         font-size: 1.8em;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    form input[type="text"] {
+        font-size: 0.9em;
+    }
+
+    form button {
+        font-size: 0.9em;
     }
 }

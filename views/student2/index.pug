@@ -46,25 +46,8 @@ html
       img(src="/images/saturn-campus.jpg", alt="Beautiful campus on Saturn")
       img(src="/images/lecture-hall.jpg", alt="Modern lecture hall with advanced AI technology")
 
-    // Comments Section
+    // Reviews Section
     section
-      h2 Comments
-      if comments && comments.length
-        ul#comments
-          each comment in comments
-            li
-              span= comment.comment
-              // Edit and Delete Functionality
-              form(action=`/student2/comments/edit/${comment.id}` method="POST" style="display:inline")
-                input(type="text" name="comment" value=comment.comment placeholder="Edit comment")
-                button(type="submit") Edit
-              form(action=`/student2/comments/delete/${comment.id}` method="POST" style="display:inline")
-                button(type="submit") Delete
-      else
-        p No comments available. Be the first to share your thoughts about Prompt Engineering!
-
-      // Add Comment Form
-      h3 Add a New Comment
-      form(action="/student2/comments/add" method="POST")
-        input(type="text" name="comment" placeholder="Enter your comment here" required)
-        button(type="submit") Add Comment
+      h2 Reviews
+      p Interested in sharing your thoughts about Prompt Engineering or reading what others have to say?
+      a.button(href="/student2/reviews") Visit the Reviews Page

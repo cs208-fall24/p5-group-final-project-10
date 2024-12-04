@@ -17,7 +17,7 @@ db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS PromptEngineering (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      comment TEXT NOT NULL
+      review TEXT NOT NULL
     )
   `);
 });
@@ -33,73 +33,73 @@ app.get('/student1', function (req, res) {
 })
 
 app.get('/student2', function (req, res) {
-  db.all('SELECT comment FROM PromptEngineering ORDER BY RANDOM() LIMIT 5', (err, rows) => {
+  db.all('SELECT review FROM PromptEngineering ORDER BY RANDOM() LIMIT 5', (err, rows) => {
     if (err) {
       console.error(err.message);
       res.status(500).send('Database error');
     } else {
-      const comments = rows.map(row => row.comment);
-      res.render('student2', { comments });
+      const reviews = rows.map(row => row.review);
+      res.render('student2/index', { reviews }); // Include subdirectory in path
     }
   });
 });
 
-// Student 2 comments page
-app.get('/student2/comments', function (req, res) {
-  db.all('SELECT id, comment FROM PromptEngineering', (err, rows) => {
+// Student 2 reviews page
+app.get('/student2/reviews', function (req, res) {
+  db.all('SELECT id, review FROM PromptEngineering', (err, rows) => {
     if (err) {
       console.error(err.message);
       res.status(500).send('Database error');
     } else {
-      res.render('comments', { comments: rows });
+      res.render('student2/reviews', { reviews: rows }); // Include subdirectory in path
     }
   });
 });
 
-// Add a new comment for Student 2
-app.post('/student2/comments/add', function (req, res) {
-  const { comment } = req.body;
-  if (!comment) {
-    res.redirect('/student2/comments');
+// Add a new review for Student 2
+app.post('/student2/reviews/add', function (req, res) {
+  const { review } = req.body;
+  if (!review) {
+    res.redirect('/student2/reviews');
     return;
   }
-  db.run('INSERT INTO PromptEngineering (comment) VALUES (?)', [comment], (err) => {
+  db.run('INSERT INTO PromptEngineering (review) VALUES (?)', [review], (err) => {
     if (err) {
       console.error(err.message);
       res.status(500).send('Database error');
     } else {
-      res.redirect('/student2/comments');
+      res.redirect('/student2/reviews');
     }
   });
 });
 
-// Delete a comment for Student 2
-app.post('/student2/comments/delete/:id', function (req, res) {
+// Delete a review for Student 2
+app.post('/student2/reviews/delete/:id', function (req, res) {
   const { id } = req.params;
   db.run('DELETE FROM PromptEngineering WHERE id = ?', [id], (err) => {
     if (err) {
       console.error(err.message);
       res.status(500).send('Database error');
     } else {
-      res.redirect('/student2/comments');
+      res.redirect('/student2/reviews');
     }
   });
 });
 
-// Edit a comment for Student 2
-app.post('/student2/comments/edit/:id', function (req, res) {
+// Edit a review for Student 2
+app.post('/student2/reviews/edit/:id', function (req, res) {
   const { id } = req.params;
-  const { comment } = req.body;
-  if (!comment) {
-    res.redirect('/student2/comments');
+  const { review } = req.body;
+  if (!review) {
+    res.redirect('/student2/reviews');
     return;
   }
-  db.run('UPDATE PromptEngineering SET comment = ? WHERE id = ?', [comment, id], (err) => {
+  db.run('UPDATE PromptEngineering SET review = ? WHERE id = ?', [review, id], (err) => {
     if (err) {
       console.error(err.message);
       res.status(500).send('Database error');
     } else {
-      res.redirect('/student2/comments');
+      res.redirect('/student2/reviews');
     }
   });
 });

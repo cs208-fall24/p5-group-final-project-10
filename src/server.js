@@ -29,7 +29,7 @@ db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS PromptEngineering (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      comment TEXT NOT NULL
+      review TEXT NOT NULL
     )
   `);
 });

@@ -3,6 +3,16 @@ body{
     background-color: black;
 }
 
+.title{
+    text-align: center;
+    color: aqua;
+}
+
+.sub-title{
+    text-align: center;
+    color: blue;
+}
+
 .double-image {
     display: flex;
     justify-content: space-between;
@@ -35,4 +45,10 @@ body{
     hyphens: auto;
     margin: 0 auto;
     margin-bottom: 20px;
+}
+
+.main-title{
+    text-decoration: none;
+    font-size: 40px;
+    color: white;
 }

@@ -30,6 +30,44 @@ h3 {
     font-size: 1.6em;
     color: #34495e;
 }
+/* Image Gallery Styling */
+.image-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    max-width: 800px; /* Optional: Limit the overall gallery width */
+}
+
+.image-gallery img {
+    width: 100%;
+    max-width: 300px; /* Reduce the maximum width for smaller images */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Notable Alumni Styling */
+details summary {
+    font-size: 1.4em; /* Increase font size for names */
+    font-weight: bold;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: transform 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+details summary:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    color: #34495e; /* Optional: Change color slightly */
+}
+
 
 /* Section styling */
 section {

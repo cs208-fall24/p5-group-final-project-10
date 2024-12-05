@@ -59,3 +59,11 @@ html
               span.review-text= review
       else
         p.no-reviews No reviews yet. Be the first to add one!
+
+          if reviews && reviews.length
+            ul.reviews-list
+              each review in reviews
+                li.review-item
+                  p= review
+          else
+            p.no-reviews No reviews yet. Be the first to add one!

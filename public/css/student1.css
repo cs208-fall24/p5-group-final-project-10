@@ -34,6 +34,7 @@ body{
     text-align: center;
     color: white;
     font-size: 20px;
+    font: 'Arial', sans-serif;
 }
 
 .top-comments{
@@ -55,4 +56,34 @@ body{
     text-decoration: none;
     font-size: 40px;
     color: white;
+}
+
+.paragraph-section1{
+    background-color: grey;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.paragraph-section2{
+    background-color: orange;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.sub-title-section{
+    background-color: silver;
+    padding: 1px;
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.main-title-section{
+    background-color: rgb(26, 26, 26, .5);
+    padding: 1px;
+    margin: 20px;
+    border-radius: 8px;
 }

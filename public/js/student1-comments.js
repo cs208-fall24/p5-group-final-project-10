@@ -25,7 +25,7 @@ fetch(fileUrl)
 
         numberOfComments++;
 
-        document.body.appendChild(pElement);
+        document.getElementsByClassName("paragraph-section2")[0].appendChild(pElement);
                 
         comments.push(pElement);
         //----- deleteButton
@@ -152,7 +152,7 @@ document.getElementById('addButton').addEventListener('click', function() {
     pElement.className = "comment";
     pElement.style.maxWidth = (window.innerWidth / 2) + 'px';
 
-    document.body.appendChild(pElement);
+    document.getElementsByClassName("paragraph-section2")[0].appendChild(pElement);
                 
     comments.push(pElement);
     //----- deleteButton

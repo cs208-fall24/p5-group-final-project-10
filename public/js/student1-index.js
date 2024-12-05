@@ -27,14 +27,14 @@ fetch("Data.txt")
 
 function placeStars(){
     //display stars!
-    for(let i = 0; i < 75; i++){
+    for(let i = 0; i < 125; i++){
         let star = document.createElement('img');
 
         star.src = "img/student1/Star.png";
         let rotation = Math.random() * 360;
         let screenHeight = document.documentElement.scrollHeight;
-        let xPos = Math.random() * 100;
-        let yPos = Math.random() * screenHeight;
+        let xPos = Math.random() * 95;
+        let yPos = Math.random() * screenHeight * .95;
         star.style.width = "50px";
         star.style.position = "absolute";
         star.style.transform = `rotate(${rotation}deg)`;

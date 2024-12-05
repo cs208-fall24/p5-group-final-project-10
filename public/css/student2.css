@@ -1,3 +1,330 @@
-body{
-    background-color: orange;
+/* General body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f8fc;
+    color: #333;
+}
+
+/* Header styling */
+h1, h2, h3 {
+    color: #2c3e50;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2.8em;
+    letter-spacing: 1px;
+}
+
+h2 {
+    margin-top: 15px;
+    font-size: 2em;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.6em;
+    color: #34495e;
+}
+
+/* Section styling */
+section {
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 1000px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+section h2, section h3 {
+    margin-top: 0;
+}
+
+/* Image Gallery Styling */
+.image-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    max-width: 800px;
+}
+
+.image-gallery img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Notable Alumni Styling */
+details summary {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: transform 0.3s, color 0.3s;
+}
+
+details summary:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    color: #34495e; /* Optional: Change color slightly */
+}
+
+
+/* Section styling */
+section {
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 1000px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+section h2, section h3 {
+    margin-top: 0;
+}
+
+/* Reviews Section */
+#reviews-section {
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+ul#reviews {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul#reviews li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+ul.reviews-list li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Review text styling */
+span.review-text {
+    font-size: 1.1em;
+    color: #34495e;
+    margin-right: 15px;
+    text-align: left;
+}
+
+/* Visit Reviews Page Button Styling */
+a.reviews-page-button {
+    display: block;
+    max-width: 300px;
+    margin: 30px auto;
+    padding: 12px 20px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+a.reviews-page-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Button Controls */
+div.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    min-width: 150px;
+}
+
+/* Buttons */
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    min-width: 75px;
+    text-align: center;
+}
+
+.edit-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+
+/* Edit Form */
+.edit-form {
+    display: none; /* Hidden by default */
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.edit-form.active {
+    display: flex;
+}
+
+.edit-input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9em;
+    flex: 1;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.edit-input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 6px rgba(52, 152, 219, 0.5);
+}
+
+/* Add Review Section */
+#add-review-section {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+.add-review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review-input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.review-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 6px rgba(52, 152, 219, 0.5);
+    outline: none;
+}
+
+.add-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.add-btn:hover {
+    background-color: #218838;
+}
+
+/* Back to main page link styling */
+a {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 1.2em;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    ul#reviews li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .controls {
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+
+    .image-gallery {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .image-gallery img {
+        max-width: 100%;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    h1, h2 {
+        font-size: 1.8em;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    form input[type="text"] {
+        font-size: 0.9em;
+    }
+
+    form button {
+        font-size: 0.9em;
+    }
 }

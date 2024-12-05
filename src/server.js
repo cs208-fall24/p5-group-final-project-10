@@ -11,8 +11,18 @@ const app = express()
 app.use(express.static('public'))
 app.set('views', 'views')
 app.set('view engine', 'pug')
-//app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
+// Initialize a table specifically for "Prompt Engineering"
+db.serialize(() => {
+  db.run(`
+    CREATE TABLE IF NOT EXISTS PromptEngineering (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      review TEXT NOT NULL
+    )
+  `);
+});
 
 app.get('/', function (req, res) {
   console.log('GET called')
@@ -105,9 +115,76 @@ app.get('/comments', function (req, res){
 //----- STUDENT 1
 
 app.get('/student2', function (req, res) {
-  console.log('GET called')
-  res.render('student2')
-})
+  db.all('SELECT review FROM PromptEngineering ORDER BY RANDOM() LIMIT 5', (err, rows) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send('Database error');
+    } else {
+      const reviews = rows.map(row => row.review);
+      res.render('student2/index', { reviews }); // Include subdirectory in path
+    }
+  });
+});
+
+// Student 2 reviews page
+app.get('/student2/reviews', function (req, res) {
+  db.all('SELECT id, review FROM PromptEngineering', (err, rows) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send('Database error');
+    } else {
+      res.render('student2/reviews', { reviews: rows }); // Include subdirectory in path
+    }
+  });
+});
+
+// Add a new review for Student 2
+app.post('/student2/reviews/add', function (req, res) {
+  const { review } = req.body;
+  if (!review) {
+    res.redirect('/student2/reviews');
+    return;
+  }
+  db.run('INSERT INTO PromptEngineering (review) VALUES (?)', [review], (err) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send('Database error');
+    } else {
+      res.redirect('/student2/reviews');
+    }
+  });
+});
+
+// Delete a review for Student 2
+app.post('/student2/reviews/delete/:id', function (req, res) {
+  const { id } = req.params;
+  db.run('DELETE FROM PromptEngineering WHERE id = ?', [id], (err) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send('Database error');
+    } else {
+      res.redirect('/student2/reviews');
+    }
+  });
+});
+
+// Edit a review for Student 2
+app.post('/student2/reviews/edit/:id', function (req, res) {
+  const { id } = req.params;
+  const { review } = req.body;
+  if (!review) {
+    res.redirect('/student2/reviews');
+    return;
+  }
+  db.run('UPDATE PromptEngineering SET review = ? WHERE id = ?', [review, id], (err) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send('Database error');
+    } else {
+      res.redirect('/student2/reviews');
+    }
+  });
+});
 
 app.get('/student3', function (req, res) {
   console.log('GET called')

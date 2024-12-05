@@ -1,66 +1,62 @@
 doctype html
 link(rel='stylesheet' href='css/student3.css')
 
-<head>
-    <title>Mayonnaise expert (PHD) - student 3</title>
-</head>
-<body>
-    <h1>Andrew Thompson</h1>
-    <h2>Sliding Major in Mayonnaise Dynamics</h2> 
-    <section>
-        <h2>Location</h2>
-        <p> 
-        | Global Academy of Condiment Sciences. 
-        | This academy is located in the middle of the Sahara desert. 
-        | This is due to the dunes that allow for many a person to slide down using mayonnaise.
-        </p>
-    </section>
-    <section>
-        <h2>About</h2>
-        <section>
-            <h3>Career Opportunities</h3>
-            <p>
-            | This career path has very few opportunities. To get a job you must be 
-            | elite at the dynamics of mayonnaise sliding. Most people who find jobs 
-            | work at food themed theme parks where mayonnaise and slides can go together.
-            </p>
-        </section>
-        <section>
-            <h3>Classes</h3>
-            <p>
-            | Foundations of Emulsification - A lecture on the delicate art of stabilizing oil and water with dramatic emphasis on “the role of eggs in societal cohesion.”
-            | Advanced Viscosity Analytics - Hands-on experiments with mayonnaise flow rates under different temperatures and altitudes.
-            | Mayonnaise History and Philosophy - Exploring humanity’s relationship with condiments, with special attention to mayonnaise in 18th-century diplomacy.
-            | Ethics of Over-Condimenting - A surprisingly heated debate course on the morality of adding mayo to pizza.
-            </p>
-            <div class="img1">
-                <img src="img/Mayonnaise Sliding.jpg" alt="Researchers Sliding on Mayonnaise in the Sahara">
-            </div>
-        </section>
-        <section>
-            <h3>Stereotypes of the Major</h3>
-            <p>
-            | Overly Passionate About Condiments - People assume these students can’t have a meal without a mayo-related commentary,
-            | whether it’s a critique of the spread consistency on a sandwich or an unsolicited suggestion to “elevate” dishes with a homemade aioli.
-            | Chronically Uncertain - Because of the “sliding” nature of their major, they’re often seen as indecisive or flaky,
-            | with peers joking that their academic focus changes as often as their sandwich preferences.
-            | Quirky and Overly Creative - These students are stereotyped as eccentric innovators, constantly pitching wild ideas like
-            | “mayonnaise as an alternative fuel source” or “mayo-based skincare products,” much to the eye-rolling amusement of others.
-            </p>
-        </section>
-    </section>
-    <section>
-            <h2>Things to Do</h2>
-            <ul>
-                <li>Competitive Mayonnaise Sliding</li>
-                <li>Condiment Art Night</li>
-                <li>Mayo-Tasting Parties</li>
-            </ul>
-            <div class="img2">
-                <img src="img/Condiment Art Night.jpg" alt="Condiment Art Night">
-            </div>
-    </section>
-    <h2>Comments</h2>
-    <ul>
-    </ul>
-</body>
+head
+    title Mayonnaise expert (PHD) - Andrew Thompson
+
+body
+    h1 Andrew Thompson
+    h2 Sliding Major in Mayonnaise Dynamics 
+
+    section
+        h2 Location
+        p 
+            | Global Academy of Condiment Sciences. 
+            | This academy is located in the middle of the Sahara desert. 
+            | This is due to the dunes that allow for many a person to slide down using mayonnaise.
+
+    section
+        h2 About
+        section
+            h3 Career Opportunities
+            p
+                | This career path has very few opportunities. To get a job you must be 
+                | elite at the dynamics of mayonnaise sliding. Most people who find jobs 
+                | work at food themed theme parks where mayonnaise and slides can go together.
+
+        section
+            h3 Classes
+            p
+                | Foundations of Emulsification - A lecture on the delicate art of stabilizing oil and water with dramatic emphasis on “the role of eggs in societal cohesion.”
+                | Advanced Viscosity Analytics - Hands-on experiments with mayonnaise flow rates under different temperatures and altitudes.
+                | Mayonnaise History and Philosophy - Exploring humanity’s relationship with condiments, with special attention to mayonnaise in 18th-century diplomacy.
+                | Ethics of Over-Condimenting - A surprisingly heated debate course on the morality of adding mayo to pizza.
+            .img1
+                img(src="img/Mayonnaise Sliding.jpg" alt="Researchers Sliding on Mayonnaise in the Sahara")
+
+        section
+            h3 Stereotypes of the Major
+            p
+                | Overly Passionate About Condiments - People assume these students can’t have a meal without a mayo-related commentary,
+                | whether it’s a critique of the spread consistency on a sandwich or an unsolicited suggestion to “elevate” dishes with a homemade aioli.
+                | Chronically Uncertain - Because of the “sliding” nature of their major, they’re often seen as indecisive or flaky,
+                | with peers joking that their academic focus changes as often as their sandwich preferences.
+                | Quirky and Overly Creative - These students are stereotyped as eccentric innovators, constantly pitching wild ideas like
+                | “mayonnaise as an alternative fuel source” or “mayo-based skincare products,” much to the eye-rolling amusement of others.
+
+    section
+        h2 Things to Do
+        ul
+            li Competitive Mayonnaise Sliding
+            li Condiment Art Night
+            li Mayo-Tasting Parties
+        .img2
+            img(src="img/Condiment Art Night.jpg" alt="Condiment Art Night")
+
+    h2 Comments
+    ul
+        - for (let i = 0; i < Math.min(comments.length, 5); i++)
+            li
+                span(id=`comment-${comments[i].id}`) #{comments[i].comment}
+
+    a(href="/student3-comments" style="display: block; text-align: center;") View All Comments

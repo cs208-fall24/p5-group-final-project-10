@@ -1,0 +1,85 @@
+doctype html
+link(rel='stylesheet' href='css/s3commentPage.css')
+
+<head>
+    <title>Mayonnaise expert (PHD) - Andrew Thompson</title>
+    script.
+      function enableEdit(id) {
+        // Find the element by ID
+        const commentElement = document.getElementById(`comment-${id}`);
+        
+        // Check if an input field is already present
+        if (commentElement.querySelector('input')) return;
+
+        // Create an input field pre-filled with the current task
+        const inputField = document.createElement('input');
+        inputField.type = 'text';
+        inputField.name = 'comment';
+        inputField.value = commentElement.textContent.trim();
+        inputField.id = `edit-input-${id}`;
+
+        // Create a save button
+        const saveButton = document.createElement('button');
+        saveButton.textContent = 'Save';
+        saveButton.type = 'button'; // Prevent default form submission
+        saveButton.onclick = function () {
+          submitEdit(id);
+        };
+
+        // Clear current content and add input field and save button
+        commentElement.textContent = '';
+        commentElement.appendChild(inputField);
+        commentElement.appendChild(saveButton);
+      }
+
+      function submitEdit(id) {
+        const inputField = document.getElementById(`edit-input-${id}`);
+        const newValue = inputField.value.trim();
+
+        if (!newValue) {
+          alert('Comment cannot be empty!');
+          return;
+        }
+
+        // Create a form to send the edit request
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/editComment3';
+
+        // Hidden input for task ID
+        const idInput = document.createElement('input');
+        idInput.type = 'hidden';
+        idInput.name = 'id';
+        idInput.value = id;
+
+        // Hidden input for the new task value
+        const commentInput = document.createElement('input');
+        commentInput.type = 'hidden';
+        commentInput.name = 'comment';
+        commentInput.value = newValue;
+
+        // Append inputs and submit
+        form.appendChild(idInput);
+        form.appendChild(commentInput);
+        document.body.appendChild(form);
+        form.submit();
+      }
+</head>
+
+p Add your comments here 
+
+    form(action="/addComment3" method="POST")
+      input(type="text" name="comment" placeholder="New COMMENT" required)
+      button(type="submit") Add
+
+h1 Comments 
+h2
+    ul
+      - for (let i = 0; i < comments.length; i++)
+        li 
+          span(id=`comment-${comments[i].id}`) #{comments[i].comment}
+          button(onclick=`enableEdit(${comments[i].id})`) Edit
+          form(action="/deleteComment3" method="POST")
+            input(type="hidden" name="id" value=comments[i].id)
+            input(type="submit" value="Delete")
+          

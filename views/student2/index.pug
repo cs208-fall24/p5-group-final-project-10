@@ -47,15 +47,15 @@ html
       img(src="/img/lecture-hall.jpg", alt="Modern lecture hall with advanced AI technology")
 
     // Reviews Section
-    section
+    section#reviews-section
       h2 Reviews
       p Interested in sharing your thoughts about Prompt Engineering or reading what others have to say?
-      a.button(href="/student2/reviews") Visit the Reviews Page
+      a.reviews-page-button(href="/student2/reviews") Visit the Reviews Page
 
-          if reviews && reviews.length
-            ul.reviews-list
-              each review in reviews
-                li.review-item
-                  p= review
-          else
-            p.no-reviews No reviews yet. Be the first to add one!
+      if reviews && reviews.length
+        ul.reviews-list
+          each review in reviews
+            li.review-item
+              span.review-text= review
+      else
+        p.no-reviews No reviews yet. Be the first to add one!

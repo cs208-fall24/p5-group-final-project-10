@@ -30,6 +30,21 @@ h3 {
     font-size: 1.6em;
     color: #34495e;
 }
+
+/* Section styling */
+section {
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 1000px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+section h2, section h3 {
+    margin-top: 0;
+}
+
 /* Image Gallery Styling */
 .image-gallery {
     display: flex;
@@ -37,12 +52,12 @@ h3 {
     gap: 20px;
     flex-wrap: wrap;
     margin: 30px auto;
-    max-width: 800px; /* Optional: Limit the overall gallery width */
+    max-width: 800px;
 }
 
 .image-gallery img {
     width: 100%;
-    max-width: 300px; /* Reduce the maximum width for smaller images */
+    max-width: 300px;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -56,11 +71,11 @@ h3 {
 
 /* Notable Alumni Styling */
 details summary {
-    font-size: 1.4em; /* Increase font size for names */
+    font-size: 1.4em;
     font-weight: bold;
     color: #2c3e50;
     cursor: pointer;
-    transition: transform 0.3s, color 0.3s; /* Smooth hover effect */
+    transition: transform 0.3s, color 0.3s;
 }
 
 details summary:hover {
@@ -92,6 +107,7 @@ section h2, section h3 {
 ul#reviews {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 ul#reviews li {
@@ -107,7 +123,7 @@ ul#reviews li {
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-ul#reviews li:hover {
+ul.reviews-list li:hover {
     transform: scale(1.02);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
@@ -116,9 +132,29 @@ ul#reviews li:hover {
 span.review-text {
     font-size: 1.1em;
     color: #34495e;
-    flex: 1;
     margin-right: 15px;
     text-align: left;
+}
+
+/* Visit Reviews Page Button Styling */
+a.reviews-page-button {
+    display: block;
+    max-width: 300px;
+    margin: 30px auto;
+    padding: 12px 20px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+a.reviews-page-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 /* Button Controls */
@@ -126,7 +162,7 @@ div.controls {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
-    min-width: 150px; /* Ensure consistent alignment */
+    min-width: 150px;
 }
 
 /* Buttons */
@@ -137,7 +173,7 @@ div.controls {
     font-size: 0.9em;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-    min-width: 75px; /* Keep buttons the same size */
+    min-width: 75px;
     text-align: center;
 }
 
@@ -178,10 +214,9 @@ div.controls {
 }
 
 .edit-form.active {
-    display: flex; /* Show when active */
+    display: flex;
 }
 
-/* Input field for editing */
 .edit-input {
     padding: 6px;
     border: 1px solid #ccc;

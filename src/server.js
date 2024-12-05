@@ -12,7 +12,6 @@ app.use(express.static('public'))
 app.set('views', 'views')
 app.set('view engine', 'pug')
 app.use(express.urlencoded({ extended: true }))
-app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // Initialize a table specifically for "Prompt Engineering"
@@ -186,6 +185,7 @@ app.post('/student2/reviews/edit/:id', function (req, res) {
     }
   });
 });
+
 // Student 3
 
 const s3db = new sqlite3.Database('s3Comments.db', (err) => {
@@ -195,6 +195,7 @@ const s3db = new sqlite3.Database('s3Comments.db', (err) => {
     console.log('Connected to the SQLite database.')
   }
 })
+
 
 s3db.run(`CREATE TABLE IF NOT EXISTS s3Comments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -1,25 +1,72 @@
-.center{
-    color: black;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.hidden-link{
-    color: black;
-    text-decoration: none;
-    font-size: 40px;
-    display: block;
-    padding-bottom: 50px;
-}
-
-.background{
-    width: 100%;
-    position: absolute;
-    left: 0;
-    background-color: grey;
-}
-
-html, body {
-    height: 100%;
+/* General styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Centered heading styles */
+h1 {
+    font-size: 75px;
+    color: #222;
+    margin: 40px 0 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 60px;
+    color: #555;
+    margin-bottom: 30px;
+    font-weight: 300;
+    text-align: center;
+}
+
+/* Card container */
+div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Individual card */
+div > a.hidden-link {
+    display: block;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #007BFF;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+div > a.hidden-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    background: #007BFF;
+    color: #fff;
+    border-color: #007BFF;
+}
+
+/* Background section */
+div.background {
+    background: linear-gradient(135deg, #007BFF, #00C6FF);
+    height: 200px;
+    width: 100%;
+    margin-top: 50px;
+    border-radius: 15px;
 }

@@ -11,7 +11,7 @@ const app = express()
 app.use(express.static('public'))
 app.set('views', 'views')
 app.set('view engine', 'pug')
-//app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // Initialize a table specifically for "Prompt Engineering"

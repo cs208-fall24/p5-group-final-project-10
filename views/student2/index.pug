@@ -51,3 +51,11 @@ html
       h2 Reviews
       p Interested in sharing your thoughts about Prompt Engineering or reading what others have to say?
       a.button(href="/student2/reviews") Visit the Reviews Page
+
+          if reviews && reviews.length
+            ul.reviews-list
+              each review in reviews
+                li.review-item
+                  p= review
+          else
+            p.no-reviews No reviews yet. Be the first to add one!

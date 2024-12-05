@@ -19,13 +19,13 @@ fetch(fileUrl)
 
         pElement.textContent = allComments[i];
         pElement.className = "comment";
-        pElement.style.maxWidth = (window.innerWidth / 2) + 'px';
+        pElement.style.maxWidth = (window.innerWidth / 1.5) + 'px';
         pElement.id = i;
         pElement.textContent = (i + 1) + ". " + pElement.textContent;
 
         numberOfComments++;
 
-        document.body.appendChild(pElement);
+        document.getElementsByClassName("paragraph-section2")[0].appendChild(pElement);
                 
         comments.push(pElement);
         //----- deleteButton
@@ -152,7 +152,7 @@ document.getElementById('addButton').addEventListener('click', function() {
     pElement.className = "comment";
     pElement.style.maxWidth = (window.innerWidth / 2) + 'px';
 
-    document.body.appendChild(pElement);
+    document.getElementsByClassName("paragraph-section2")[0].appendChild(pElement);
                 
     comments.push(pElement);
     //----- deleteButton
@@ -286,8 +286,8 @@ function placeStars(){
         star.src = "img/student1/Star.png";
         let rotation = Math.random() * 360;
         let screenHeight = document.documentElement.scrollHeight;
-        let xPos = Math.random() * 100;
-        let yPos = Math.random() * screenHeight;
+        let xPos = Math.random() * 95;
+        let yPos = Math.random() * screenHeight * .95;
         star.style.width = "50px";
         star.style.position = "absolute";
         star.style.transform = `rotate(${rotation}deg)`;

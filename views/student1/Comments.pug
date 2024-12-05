@@ -4,18 +4,21 @@ link(rel='stylesheet' href='css/student1.css')
 head
     title Sleeping - Student 1 - Comments
 body
-    div(class="stars")
+    div(class="stars" style="position: relative; z-index: -1;")
 
     a(href="/student1" class="main-title") Grant Koupal - University of Sleeping
 
-    h2(style="text-align: center; color: white;" id="HI") Comments
+    section(class="main-title-section")
 
-    button(id="addButton" style="position: absolute; left: 50%; transform: translateX(-100px);") Add Comment
+        h2(style="text-align: center; color: white;" id="HI") Comments
 
-    input(type="text" style="width: auto; position: absolute; left: 50%;" id="commentInput" placeholder="Comment...")
+        button(id="addButton" style="position: absolute; left: 50%; transform: translateX(-100px);") Add Comment
 
-    p -
+        input(type="text" style="width: 25%; position: absolute; left: 50%;" id="commentInput" placeholder="Comment...")
 
-    style(src="css/student1.css")
+        p -
+
+        section(class="paragraph-section2" style="background-color: orange")
+
     script(src="js/student1-comments.js")
     

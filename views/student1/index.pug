@@ -4,55 +4,68 @@ link(rel='stylesheet' href='css/student1.css')
 head
     title Sleeping - Student 1
 body
-    div(class="stars")
+    div(class="stars" style="z-index: -1; position: relative;")
 
-    a(href="/" style="text-decoration: none; color: inherit; font-size: 40px; color: white;") Grant Koupal - University of Sleeping
+    a(href="/" class="main-title") Grant Koupal - University of Sleeping
 
-    h2(class="title") Location
-    p(style="width: 50%; margin: 0 auto;" class="center-text")
-        | The Major of Sleeping is located on the planet Neptune, 100km below air level directly below the south pole.
-        | It is perfectly built to float there amongst the very high pressurized gasses that surround it.
-        | The Major can only be accessed by being transported by a very durable capsule that takes you to the entrance.
+    section(class="main-title-section")
+        h2(class="title") Location
+        section(class="paragraph-section1")
+            p(style="width: 75%; margin: 0 auto;" class="center-text")
+                | The Major of Sleeping is located on the planet Neptune, 100km below air level directly below the south pole.
+                | It is perfectly built to float there amongst the very high pressurized gasses that surround it.
+                | The Major can only be accessed by being transported by a very durable capsule that takes you to the entrance.
     
-    h2(class="title") About 
-    h3(class="sub-title") Difficulty 
-    p(style="width: 50%; margin: 0 auto;" class="center-text")
-        | The Major of Sleeping requires a lot of focus and commitment to be able to reach the sleeping levels of being 
-        | in bed for days! The major provides 100 courses with 25 courses per semester that take an estimated 20 hours per course.
-        | In order to stay in the school there is a requirement of 12 hours per day of sleep.
+    section(class="main-title-section")
+        h2(class="title") About
+        section(class="sub-title-section")
+            h3(class="sub-title") Difficulty 
+            section(class="paragraph-section2")
+                p(style="width: 75%; margin: 0 auto;" class="center-text")
+                    | The Major of Sleeping requires a lot of focus and commitment to be able to reach the sleeping levels of being 
+                    | in bed for days! The major provides 100 courses with 25 courses per semester that take an estimated 20 hours per course.
+                    | In order to stay in the school there is a requirement of 12 hours per day of sleep.
 
-    h3(class="sub-title") Requirements 
-    p(style="width: 50%; margin: 0 auto;" class="center-text") 
-        | There are many requirements to go into the school, the most important one being 24 hours of sleep before going into the school 
-        | in the first place, this will help you prepare for the responsibilities you will have when at the school. You are also required
-        | to never go to bed after 12:00am during your senior year of highschool.
+        section(class="sub-title-section")
+            h3(class="sub-title") Requirements
+            section(class="paragraph-section1")
+                p(style="width: 75%; margin: 0 auto;" class="center-text") 
+                    | There are many requirements to go into the school, the most important one being 24 hours of sleep before going into the school 
+                    | in the first place, this will help you prepare for the responsibilities you will have when at the school. You are also required
+                    | to never go to bed after 12:00am during your senior year of highschool.
 
-    h3(class="sub-title") Career Opportunities 
-    p(style="width: 50%; margin: 0 auto;" class="center-text") 
-        | This major helps you in all career oportunities because you will be able to sleep faster and more effectively no 
-        | matter what job you go into. This means this will allow you to go into any job you want because when you wake up,
-        | you can learn at peak performances to work at your job at the highest level.
+        section(class="sub-title-section")
+            h3(class="sub-title") Career Opportunities
+            section(class="paragraph-section2")
+                p(style="width: 75%; margin: 0 auto;" class="center-text") 
+                    | This major helps you in all career oportunities because you will be able to sleep faster and more effectively no 
+                    | matter what job you go into. This means this will allow you to go into any job you want because when you wake up,
+                    | you can learn at peak performances to work at your job at the highest level.
+    
+    section(class="main-title-section")
+        h2(class="title") Things to Do
+        section(class="paragraph-section1")
+            p(style="width: 75%; margin: 0 auto;" class="center-text")
+                | This majors allows for an endless amount of opportunity because it can be applied anywhere!
+                br
+                br
+                | Lets say you want to in fast food, but want to make more than everyone else, by having a sleeping major you can get 5 hours of sleep but feel like you get 10, allowing you to work the same or more amount of hours
+                br
+                br
+                | By having a major in sleeping, it allows you to have more time in your day meaning you could work two jobs at once because you don't need as much time to sleep
+                br
+                br
+                | Lets say you have a lot to do on your list in a couple days, if you decide to get 10 hours of sleep after taking the major, you will feel totally awake for 30 hours straight or more
+    section(class="paragraph-section2")
+        div.double-image
+            img.image-left(src="img/student1/University.jpg" alt="University in Space" width="300px")
+            img.image-right(src="img/student1/Sleep.png" alt="University in Space" width="300px")
+    
+    section(class="main-title-section")
+        h2(class="title") Top Comments
+        section(class="paragraph-section1")
+            div(class="top-comments" style="display: relative; text-align: center;")
 
-    h2(class="title") Things to Do
-    p(style="width: 50%; margin: 0 auto;" class="center-text")
-        | This majors allows for an endless amount of opportunity because it can be applied anywhere!
-        br
-        br
-        | Lets say you want to in fast food, but want to make more than everyone else, by having a sleeping major you can get 5 hours of sleep but feel like you get 10, allowing you to work the same or more amount of hours
-        br
-        br
-        | By having a major in sleeping, it allows you to have more time in your day meaning you could work two jobs at once because you don't need as much time to sleep
-        br
-        br
-        | Lets say you have a lot to do on your list in a couple days, if you decide to get 10 hours of sleep after taking the major, you will feel totally awake for 30 hours straight or more
-    div.double-image
-        img.image-left(src="img/student1/University.jpg" alt="University in Space" width="300px")
-        img.image-right(src="img/student1/Sleep.png" alt="University in Space" width="300px")
-        
-    h2(class="title") Comments
-
-    div(class="top-comments" style="display: relative; text-align: center;")
-
-    a(href="/comments" style="display: block; text-align: center;") View All Comments
+            a(href="/comments" style="display: block; text-align: center;") View All Comments
 
     script(src="js/student1-index.js")

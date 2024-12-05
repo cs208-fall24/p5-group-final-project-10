@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title Reviews for Prompt Engineering
+    link(rel="stylesheet", href="/css/student2.css")
+    script(src="/js/student2.js")
+  body
+    h1 Reviews for Prompt Engineering
+
+    section#reviews-section
+      if reviews && reviews.length
+        ul#reviews
+          each review in reviews
+            li
+              span.review-text= review.review
+              div.controls
+                button(type="button" class="btn edit-btn" data-id=review.id) Edit
+                form(action=`/student2/reviews/delete/${review.id}` method="POST" class="delete-form")
+                  button(type="submit" class="btn delete-btn") Delete
+                form(action=`/student2/reviews/edit/${review.id}` method="POST" class="edit-form hidden")
+                  input(type="text" name="review" value=review.review placeholder="Edit review" class="edit-input")
+                  button(type="submit" class="btn save-btn") Save
+      else
+        p.no-reviews No reviews available. Be the first to share your thoughts!
+
+    section#add-review-section
+      h3 Add a New Review
+      form(action="/student2/reviews/add" method="POST" class="add-review-form")
+        input(type="text" name="review" placeholder="Enter your review here" required class="review-input")
+        button(type="submit" class="btn add-btn") Add Review
+
+    footer
+      a(href="/student2" class="back-link") Back to Main Page

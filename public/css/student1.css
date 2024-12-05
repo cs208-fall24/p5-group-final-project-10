@@ -6,11 +6,13 @@ body{
 .title{
     text-align: center;
     color: aqua;
+    font-size: 40px;
 }
 
 .sub-title{
     text-align: center;
     color: blue;
+    font-size: 30px;
 }
 
 .double-image {
@@ -31,6 +33,7 @@ body{
 .center-text{
     text-align: center;
     color: white;
+    font-size: 20px;
 }
 
 .top-comments{
@@ -45,6 +48,7 @@ body{
     hyphens: auto;
     margin: 0 auto;
     margin-bottom: 20px;
+    font-size: 20px;
 }
 
 .main-title{

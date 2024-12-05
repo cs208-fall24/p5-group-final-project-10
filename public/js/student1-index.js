@@ -17,7 +17,7 @@ fetch("Data.txt")
             comment.style.margin = "0 auto";
             comment.style.overflowWrap = "break-word";
             comment.style.marginBottom = "20px";
-            comment.style.maxWidth = (window.innerWidth / 2) + 'px';
+            comment.style.maxWidth = (window.innerWidth / 1.5) + 'px';
             comment.textContent = comments[i];
             document.getElementsByClassName('top-comments')[0].appendChild(comment);
         } catch (error){break;}

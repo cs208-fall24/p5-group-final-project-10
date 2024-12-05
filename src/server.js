@@ -11,7 +11,7 @@ const app = express()
 app.use(express.static('public'))
 app.set('views', 'views')
 app.set('view engine', 'pug')
-//app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.get('/', function (req, res) {
@@ -108,12 +108,124 @@ app.get('/student2', function (req, res) {
   console.log('GET called')
   res.render('student2')
 })
+// Student 3
+
+const s3db = new sqlite3.Database('s3Comments.db', (err) => {
+  if (err) {
+    console.error('Error opening database:', err.message)
+  } else {
+    console.log('Connected to the SQLite database.')
+  }
+})
+
+s3db.run(`CREATE TABLE IF NOT EXISTS s3Comments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    comment TEXT NOT NULL
+)`)
 
 app.get('/student3', function (req, res) {
   console.log('GET called')
-  res.render('student3')
+  //res.render('student3')
+
+  const comments = []
+  s3db.each(
+    'SELECT id, comment FROM s3Comments',
+    function (err, row) {
+      if (err) {
+        console.error(err)
+      } else {
+        comments.push({ id: row.id, comment: row.comment })
+      }
+    },
+    function (err) {
+      if (!err) {
+        res.render('student3', { comments })
+      } else {
+        console.error(err)
+      }
+    }
+  )
 })
 
+app.get('/student3-comments', function (req, res) {
+  console.log('GET called')
+  //res.render('student3/student3-comments')
+
+  const comments = []
+  s3db.each(
+    'SELECT id, comment FROM s3Comments',
+    function (err, row) {
+      if (err) {
+        console.error(err)
+      } else {
+        comments.push({ id: row.id, comment: row.comment })
+      }
+    },
+    function (err) {
+      if (!err) {
+        res.render('student3/student3-comments', { comments })
+      } else {
+        console.error(err)
+      }
+    }
+  )
+})
+
+app.post('/addComment3', (req, res) => {
+  const { comment } = req.body;
+
+  if (!comment || comment.trim() === '') {
+      console.error('Comment is empty or missing');
+      res.status(400).send('Comment cannot be empty');
+      return;
+  }
+
+  const stmt = s3db.prepare('INSERT INTO s3Comments (comment) VALUES (?)');
+  stmt.run(comment.trim(), function (err) {
+      if (err) {
+          console.error('Error adding comment:', err);
+          res.status(500).send('Internal server error');
+          return;
+      }
+
+      console.log('Comment added successfully');
+      res.redirect('/');
+  });
+  stmt.finalize();
+});
+
+
+app.post('/deleteComment3', function (req, res) {
+  console.log('Deleting s3Comments item')
+  const stmt = s3db.prepare('DELETE FROM s3Comments WHERE id = ?')
+  stmt.run(req.body.id, function (err) {
+    if (err) {
+      console.error('Error deleting comment:', err.message)
+    } else {
+      console.log('Comment deleted successfully')
+      res.redirect('/') // Redirect to refresh the list
+    }
+  })
+  stmt.finalize()
+})
+
+app.post('/editComment3', function (req, res) {
+  console.log('Editing s3Comments item')
+  const { id, comment } = req.body
+
+  const stmt = s3db.prepare('UPDATE s3Comments SET comment = ? WHERE id = ?')
+  stmt.run(comment, id, function (err) {
+    if (err) {
+      console.error('Error updating comment:', err.message)
+    } else {
+      console.log('Comment updated successfully')
+      res.redirect('/') // Redirect to refresh the list
+    }
+  })
+  stmt.finalize()
+})
+
+// Student 3
 // Start the web server
 app.listen(3000, function () {
   console.log('Listening on port 3000...')

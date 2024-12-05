@@ -18,3 +18,10 @@ img {
     height: 100%;
     width: 100%;
 }
+.view-all-comments {
+    color: #FF5733; 
+}
+
+.view-all-comments:hover {
+    color: #C70039; 
+}
